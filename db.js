@@ -1,5 +1,21 @@
-import { JSONFilePreset } from "lowdb/node";
+import { Low } from "lowdb";
+import { JSONFile } from "lowdb/node";
+import fs from "fs";
+import path from "path";
 
-const db = await JSONFilePreset("./employee-data.json", { users: [] });
+const tmpFile = "/tmp/employee-data.json";
+const originFile = path.join(process.cwd(), "employee-data.json");
 
-export default db;
+// Copy original to /tmp if it doesn't exist
+if (!fs.existsSync(tmpFile)) {
+  fs.copyFileSync(originFile, tmpFile);
+}
+
+const adapter = new JSONFile(tmpFile);
+const db = new Low(adapter);
+
+export async function getDb() {
+  await db.read();
+  db.data ||= { users: [] };
+  return db;
+}
