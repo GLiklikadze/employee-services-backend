@@ -1,14 +1,18 @@
-// import { JSONFilePreset } from "lowdb/node";
-
-// const db = await JSONFilePreset("./employee-data.json", { users: [] });
-
-// export default db;
+// db.js
 import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
+import path from "path";
+import { fileURLToPath } from "url";
 
-const adapter = new JSONFile("db.json"); // relative to project root
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const file = path.join(__dirname, "db.json");
+const adapter = new JSONFile(file);
 const db = new Low(adapter);
-await db.read();
-db.data ||= { users: [] }; // fallback if empty
 
-export default db;
+// Function to ensure db is read and ready
+export async function getDb() {
+  await db.read();
+  db.data ||= { users: [] };
+  return db;
+}

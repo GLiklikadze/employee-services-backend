@@ -2,13 +2,13 @@ import express from "express";
 import cors from "cors";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
-import db from "./db.js";
+import { getDb } from "./db.js"; // async db getter
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Root endpoint
+// -------------------- Root Endpoint --------------------
 app.get("/", (req, res) => {
   res.json({
     message: "Employee Services API",
@@ -23,24 +23,27 @@ app.get("/", (req, res) => {
   });
 });
 
-// GET /users
-app.get("/users", (req, res) => {
+// -------------------- GET /users --------------------
+app.get("/users", async (req, res) => {
+  const db = await getDb();
   res.json(db.data.users);
 });
 
-// GET /users/:id
-app.get("/users/:id", (req, res) => {
+// -------------------- GET /users/:id --------------------
+app.get("/users/:id", async (req, res) => {
+  const db = await getDb();
   const user = db.data.users?.find((u) => u._id === req.params.id);
   if (!user) return res.status(404).json({ message: "User not found" });
   res.json(user);
 });
 
-// POST /sign-in
+// -------------------- POST /sign-in --------------------
 app.post("/sign-in", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password)
     return res.status(400).json({ message: "Email and password required" });
 
+  const db = await getDb();
   const user = db.data.users.find((u) => u.email === email);
   if (!user) return res.status(401).json({ message: "Invalid credentials" });
 
@@ -57,13 +60,14 @@ app.post("/sign-in", async (req, res) => {
   });
 });
 
-// POST /sign-up
+// -------------------- POST /sign-up --------------------
 app.post("/sign-up", async (req, res) => {
   const { email, firstName, lastName, password } = req.body;
   if (!email || !password || !firstName || !lastName) {
     return res.status(400).json({ message: "All fields are required" });
   }
 
+  const db = await getDb();
   const exists = db.data.users.find((u) => u.email === email);
   if (exists)
     return res.status(400).json({ message: "Email already registered" });
@@ -85,7 +89,7 @@ app.post("/sign-up", async (req, res) => {
   res.status(201).json({ message: "User created", id: newUser._id, email });
 });
 
-// PATCH /settings
+// -------------------- PATCH /settings --------------------
 app.patch("/settings", async (req, res) => {
   const { addressBookRole, targetUserId, signedInUserId } = req.body;
   if (!addressBookRole || !targetUserId || !signedInUserId) {
@@ -94,6 +98,7 @@ app.patch("/settings", async (req, res) => {
       .json({ message: "role, targetUserId, and signedInUserId required" });
   }
 
+  const db = await getDb();
   const signedInUser = db.data.users.find((u) => u._id === signedInUserId);
   const targetUser = db.data.users.find((u) => u._id === targetUserId);
 
@@ -116,7 +121,7 @@ app.patch("/settings", async (req, res) => {
   });
 });
 
-// PUT /edit/:id
+// -------------------- PUT /edit/:id --------------------
 app.put("/edit/:id", async (req, res) => {
   const { id } = req.params;
   const { updatedEmployee } = req.body;
@@ -125,6 +130,7 @@ app.put("/edit/:id", async (req, res) => {
     return res.status(400).json({ message: "updatedEmployee object required" });
   }
 
+  const db = await getDb();
   const targetUser = db.data.users.find((u) => u._id === id);
   if (!targetUser) return res.status(404).json({ message: "User not found" });
 
@@ -134,5 +140,5 @@ app.put("/edit/:id", async (req, res) => {
   res.json({ message: "User updated", id, updatedUser: targetUser });
 });
 
-// Export for Vercel
+// -------------------- Export for Vercel --------------------
 export default app;
