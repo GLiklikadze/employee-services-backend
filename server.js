@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
-import { readData, writeData } from "./db.js";
+import { readData, writeData } from "./employee-data.json";
 
 const app = express();
 app.use(express.json());
