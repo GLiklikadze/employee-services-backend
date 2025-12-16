@@ -1,0 +1,563 @@
+{
+  "users": [
+    {
+      "_id": "1",
+      "isRemoteWork": true,
+      "user_avatar": "../assets/avatar/avatar-1.png",
+      "first_name": "Luffy",
+      "last_name": "Monkey",
+      "first_native_name": "Luffy",
+      "last_native_name": "Monkey",
+      "middle_native_name": "D.B",
+      "department": "Finance",
+      "building": "Tbilisi",
+      "room": "1404",
+      "date_birth": {
+        "year": 2000,
+        "month": 1,
+        "day": 1
+      },
+      "desk_number": 20,
+      "manager": {
+        "id": "",
+        "first_name": "John",
+        "last_name": "Snow"
+      },
+      "phone": "+12931293129",
+      "email": "luffy.monkey@leverx.com",
+      "password": "$2a$10$rxMwZIKUs55NzZMs.NS1h.8HwGmhox6LPwBFgW8Wnrb0O1fDQen/6",
+      "teams": "luffy.monkey@leverx.com",
+      "cnumber": "C5336116",
+      "citizenship": "Georgia",
+      "visa": [
+        {
+          "issuing_country": "Poland",
+          "type": "National visa type D",
+          "start_date": 1652158800000,
+          "end_date": 1683608400000
+        },
+        {
+          "issuing_country": "Greece",
+          "type": "Long-Stay Visa (D)",
+          "start_date": 1709299200000,
+          "end_date": 1740835200000
+        }
+      ],
+      "address_book_role": "admin",
+      "hr_employee_list": []
+    },
+    {
+      "_id": "2",
+      "isRemoteWork": false,
+      "user_avatar": "../assets/avatar/avatar-2.png",
+      "first_name": "Elias",
+      "last_name": "Vance",
+      "first_native_name": "Elias",
+      "last_native_name": "Vance",
+      "middle_native_name": "K.",
+      "department": "DevOps",
+      "building": "Tbilisi",
+      "room": "1405",
+      "date_birth": {
+        "year": 1999,
+        "month": 10,
+        "day": 10
+      },
+      "desk_number": 21,
+      "manager": {
+        "id": "8880",
+        "first_name": "Kakashi",
+        "last_name": "Hatake"
+      },
+      "phone": "+48123456789",
+      "email": "elias.vance@leverx.com",
+      "password": "$2a$10$e5pVEFfJoPIHwsUhw.jKxumfVRUFmR/rX/ZfSSv6h0e/HFO9d6DMm",
+      "teams": "elias.vance@leverx.com",
+      "cnumber": "C5336117",
+      "citizenship": "UK",
+      "visa": [
+        {
+          "issuing_country": "Poland",
+          "type": "Work Permit Type A",
+          "start_date": 1672531200000,
+          "end_date": 1704067200000
+        },
+        {
+          "issuing_country": "Belgium",
+          "type": "Diplomatic Visa",
+          "start_date": 1672531200000,
+          "end_date": 1704067200000
+        }
+      ],
+      "address_book_role": "hr",
+      "hr_employee_list": ["3", "4", "5"]
+    },
+    {
+      "_id": "3",
+      "isRemoteWork": true,
+      "user_avatar": "../assets/avatar/avatar-3.png",
+      "first_name": "Anya",
+      "last_name": "Sharma",
+      "first_native_name": "Anya",
+      "last_native_name": "Sharma",
+      "middle_native_name": "R.J",
+      "department": "Data",
+      "building": "Remote",
+      "room": "1307",
+      "date_birth": {
+        "year": 1990,
+        "month": 9,
+        "day": 20
+      },
+      "desk_number": 11,
+      "manager": {
+        "id": "880",
+        "first_name": "Albus",
+        "last_name": "Dumbledore"
+      },
+      "phone": "+447700900077",
+      "email": "anya.sharma@leverx.com",
+      "password": "$2a$10$frX92.dwztHMg18j0xswyua7e/b4dv4apc37NXMi1ye9ScOhCVyPK",
+      "teams": "anya.sharma@leverx.com",
+      "cnumber": "C5336118",
+      "citizenship": "USA",
+      "visa": [
+        {
+          "issuing_country": "Portugal",
+          "type": "Digital Nomad Visa",
+          "start_date": 1693526400000,
+          "end_date": 1725062400000
+        },
+        {
+          "issuing_country": "Sweden",
+          "type": "Schengen Visa",
+          "start_date": 1714521600000,
+          "end_date": 1746057600000
+        }
+      ],
+      "address_book_role": "employee",
+      "hr_employee_list": []
+    },
+    {
+      "_id": "4",
+      "isRemoteWork": false,
+      "user_avatar": "../assets/avatar/avatar-4.png",
+      "first_name": "Omar",
+      "last_name": "Hassan",
+      "first_native_name": "Omar",
+      "last_native_name": "Hassan",
+      "middle_native_name": "A.",
+      "department": "Finance",
+      "building": "Poland",
+      "room": "1500",
+      "date_birth": {
+        "year": 1970,
+        "month": 5,
+        "day": 29
+      },
+      "desk_number": 1,
+      "manager": {
+        "id": "8710",
+        "first_name": "Nick",
+        "last_name": "Fury"
+      },
+      "phone": "+15551234567",
+      "email": "omar.hassan@leverx.com",
+      "password": "$2a$10$pizxnAJl.BqpAZr3uF1PF.34wXtx1s0ZoYWdXCmxqOp/tnip8u6Re",
+      "teams": "omar.hassan@leverx.com",
+      "cnumber": "C5336119",
+      "citizenship": "USA",
+      "visa": [
+        {
+          "issuing_country": "Poland",
+          "type": "Blue Card",
+          "start_date": 1640995200000,
+          "end_date": 1735689600000
+        },
+        {
+          "issuing_country": "Netherlands",
+          "type": "Family Reunification Visa",
+          "start_date": 1669852800000,
+          "end_date": 1701388800000
+        }
+      ],
+      "address_book_role": "employee",
+      "hr_employee_list": []
+    },
+    {
+      "_id": "5",
+      "isRemoteWork": true,
+      "user_avatar": "../assets/avatar/avatar-5.png",
+      "first_name": "Anna",
+      "last_name": "Rivia",
+      "first_native_name": "Anna",
+      "last_native_name": "z Rivii",
+      "middle_native_name": "",
+      "department": "DevOps",
+      "building": "Remote",
+      "room": "1616",
+      "date_birth": {
+        "year": 1980,
+        "month": 11,
+        "day": 15
+      },
+      "desk_number": 6,
+      "manager": {
+        "id": "1292",
+        "first_name": "Vesemir",
+        "last_name": "Wolf"
+      },
+      "phone": "+48600500400",
+      "email": "anna.rivia@leverx.com",
+      "password": "$2a$10$LJS/1.qcR78UOeEGF7n4vOlEqiUqvN7Rt59hMuRX2c36UkJ1Dbloi",
+      "teams": "anna.rivia@leverx.com",
+      "cnumber": "C5336120",
+      "citizenship": "Poland",
+      "visa": [
+        {
+          "issuing_country": "Poland",
+          "type": "National visa type D",
+          "start_date": 1664582400000,
+          "end_date": 1696118400000
+        },
+        {
+          "issuing_country": "Italy",
+          "type": "Transit Visa",
+          "start_date": 1717257600000,
+          "end_date": 1719849600000
+        }
+      ],
+      "address_book_role": "employee",
+      "hr_employee_list": []
+    },
+    {
+      "_id": "6",
+      "isRemoteWork": false,
+      "user_avatar": "../assets/avatar/avatar-6.png",
+      "first_name": "Mikasa",
+      "last_name": "Ackerman",
+      "first_native_name": "Mikasa",
+      "last_native_name": "Ackerman",
+      "middle_native_name": "",
+      "department": "Finance",
+      "building": "Poland Office",
+      "room": "1404",
+      "date_birth": {
+        "year": 2000,
+        "month": 2,
+        "day": 10
+      },
+      "desk_number": 22,
+      "manager": {
+        "id": "665",
+        "first_name": "Levi",
+        "last_name": "Ackerman"
+      },
+      "phone": "+819012345678",
+      "email": "mikasa.ackerman@leverx.com",
+      "password": "$2a$10$bSKzQYolyy.2RWDUTEeMpe2hq6M0YLsJmvVBojD4wZ5hlnHb6NLGW",
+      "teams": "mikasa.ackerman@leverx.com",
+      "cnumber": "C5336121",
+      "citizenship": "Germany",
+      "visa": [
+        {
+          "issuing_country": "Poland",
+          "type": "National visa type D",
+          "start_date": 1664582400000,
+          "end_date": 1696118400000
+        },
+        {
+          "issuing_country": "Spain",
+          "type": "Work Permit",
+          "start_date": 1680326400000,
+          "end_date": 1711862400000
+        }
+      ],
+      "address_book_role": "hr",
+      "hr_employee_list": []
+    },
+    {
+      "_id": "7",
+      "isRemoteWork": false,
+      "user_avatar": "../assets/avatar/avatar-7.png",
+      "first_name": "Philip",
+      "last_name": "Lahm",
+      "first_native_name": "Philip",
+      "last_native_name": "Lahm",
+      "middle_native_name": "M",
+      "department": "Data Science",
+      "building": "Tbilisi Office",
+      "room": "202",
+      "date_birth": {
+        "year": 1965,
+        "month": 9,
+        "day": 7
+      },
+      "desk_number": 5,
+      "manager": {
+        "id": "777",
+        "first_name": "Jup",
+        "last_name": "Heinkes"
+      },
+      "phone": "+15055550100",
+      "email": "philip.lahm@leverx.com",
+      "password": "$2a$10$BMMzl/lItJ/WTcujRZUts.SG6yUaPpB0JsSvvuPVrwaJFBkGXWu.O",
+      "teams": "philip.lahm@leverx.com",
+      "cnumber": "C5336122",
+      "citizenship": "Germany",
+      "visa": [
+        {
+          "issuing_country": "Georgia",
+          "type": "Work Residence Permit",
+          "start_date": 1655251200000,
+          "end_date": 1686787200000
+        },
+        {
+          "issuing_country": "France",
+          "type": "Student Visa",
+          "start_date": 1704067200000,
+          "end_date": 1735689600000
+        }
+      ],
+      "address_book_role": "employee",
+      "hr_employee_list": []
+    },
+    {
+      "_id": "8",
+      "isRemoteWork": false,
+      "user_avatar": "../assets/avatar/avatar-8.png",
+      "first_name": "Ricardo",
+      "last_name": "Kaka",
+      "first_native_name": "Ricardo",
+      "last_native_name": "Kaka",
+      "middle_native_name": "D Silva",
+      "department": "Data",
+      "building": "Poland",
+      "room": "1600",
+      "date_birth": {
+        "year": 1995,
+        "month": 4,
+        "day": 20
+      },
+      "desk_number": 100,
+      "manager": {
+        "id": "5678",
+        "first_name": "Luis",
+        "last_name": "Scollari"
+      },
+      "phone": "+442079460000",
+      "email": "ricardo.kaka@leverx.com",
+      "password": "$2a$10$BT.c8iKawOXdXCxHBVoIu.lqH9vgbP3fwKXV6MJtVahNQ5Psl.y4e",
+      "teams": "ricardo.kaka@leverx.com",
+      "cnumber": "C5336123",
+      "citizenship": "Brazil",
+      "visa": [
+        {
+          "issuing_country": "Poland",
+          "type": "Business Visa",
+          "start_date": 1675209600000,
+          "end_date": 1682899200000
+        },
+        {
+          "issuing_country": "Germany",
+          "type": "Tourist Visa",
+          "start_date": 1690934400000,
+          "end_date": 1698796800000
+        }
+      ],
+      "address_book_role": "admin",
+      "hr_employee_list": []
+    },
+    {
+      "_id": "9",
+      "isRemoteWork": true,
+      "user_avatar": "../assets/avatar/avatar-9.png",
+      "first_name": "Kakashi",
+      "last_name": "Hatake",
+      "first_native_name": "Kakashi",
+      "last_native_name": "Hatake",
+      "middle_native_name": "V",
+      "department": "Finance",
+      "building": "Remote",
+      "room": "1183",
+      "date_birth": {
+        "year": 1985,
+        "month": 2,
+        "day": 19
+      },
+      "desk_number": 0,
+      "manager": {
+        "id": "9712",
+        "first_name": "Lucius",
+        "last_name": "Fox"
+      },
+      "phone": "+12125550199",
+      "email": "kakashi.hatake@leverx.com",
+      "password": "$2a$10$PMDIyfP.7JG6uysFoz4gvOZ1373El/GAv9fswAWqkvUqXw4gcNAU6",
+      "teams": "kakashi.hatake@leverx.com",
+      "cnumber": "C5336124",
+      "citizenship": "Netherlands",
+      "visa": [
+        {
+          "issuing_country": "Poland",
+          "type": "National visa type C",
+          "start_date": 1664582400000,
+          "end_date": 1696118400000
+        },
+        {
+          "issuing_country": "Germany",
+          "type": "Business Visa",
+          "start_date": 1690934400000,
+          "end_date": 1698796800000
+        }
+      ],
+      "address_book_role": "employee",
+      "hr_employee_list": []
+    },
+    {
+      "_id": "0adcfd14-1646-43d0-adee-ea32f6ae7fe8",
+      "isRemoteWork": false,
+      "user_avatar": "",
+      "first_name": "Giorgi",
+      "last_name": "Liklikadze",
+      "first_native_name": "",
+      "last_native_name": "",
+      "middle_native_name": "",
+      "department": "",
+      "building": "",
+      "room": "",
+      "date_birth": {
+        "year": 1995,
+        "month": 8,
+        "day": 15
+      },
+      "desk_number": 0,
+      "manager": {
+        "id": "8713",
+        "first_name": "",
+        "last_name": ""
+      },
+      "phone": "",
+      "email": "giorgi@mail.com",
+      "password": "$2b$10$qrlkeyNpNfhM6ZKmd4UVDe4VTV0SetBtUgBf4ZxRKfmWujklFaSuq",
+      "teams": "",
+      "cnumber": "",
+      "citizenship": "",
+      "visa": [
+        {
+          "issuing_country": "Poland",
+          "type": "National visa type C",
+          "start_date": 1664582400000,
+          "end_date": 1696118400000
+        },
+        {
+          "issuing_country": "Germany",
+          "type": "Business Visa",
+          "start_date": 1690934400000,
+          "end_date": 1698796800000
+        }
+      ],
+      "address_book_role": "admin",
+      "hr_employee_list": []
+    },
+    {
+      "_id": "ac7eaa94-28b1-4dde-95de-13919c2badfa",
+      "isRemoteWork": false,
+      "user_avatar": "",
+      "first_name": "lionel",
+      "last_name": "lionel",
+      "first_native_name": "",
+      "last_native_name": "",
+      "middle_native_name": "",
+      "department": "",
+      "building": "",
+      "room": "",
+      "date_birth": {
+        "year": "",
+        "month": "",
+        "day": ""
+      },
+      "desk_number": "",
+      "manager": {
+        "id": "",
+        "first_name": "",
+        "last_name": ""
+      },
+      "phone": "",
+      "email": "lionel@mail.com",
+      "password": "$2b$10$tl6D.pHG0wJMfJ9BSPTQnOXa.lzPf447uP5aDF9SG8gfx7NZ.EE/2",
+      "teams": "",
+      "cnumber": "",
+      "citizenship": "",
+      "visa": [],
+      "address_book_role": "employee",
+      "hr_employee_list": []
+    },
+    {
+      "_id": "316a53e5-e7a8-4408-a414-9726d6b94207",
+      "isRemoteWork": false,
+      "user_avatar": "",
+      "first_name": "Andres",
+      "last_name": "Gonzalez",
+      "first_native_name": "",
+      "last_native_name": "",
+      "middle_native_name": "",
+      "department": "",
+      "building": "",
+      "room": "",
+      "date_birth": {
+        "year": "",
+        "month": "",
+        "day": ""
+      },
+      "desk_number": "",
+      "manager": {
+        "id": "",
+        "first_name": "",
+        "last_name": ""
+      },
+      "phone": "",
+      "email": "andres@mail.com",
+      "password": "$2b$10$cfBOLIJi1TtG1F4Rwok00.LQYdfl5le24toMaMtN4tNOF2LO93PGa",
+      "teams": "",
+      "cnumber": "",
+      "citizenship": "",
+      "visa": [],
+      "address_book_role": "employee",
+      "hr_employee_list": []
+    },
+    {
+      "_id": "2aab6b58-6fec-49a8-8975-9195277a07fc",
+      "isRemoteWork": false,
+      "user_avatar": "",
+      "first_name": "Michael",
+      "last_name": "Kruger",
+      "first_native_name": "",
+      "last_native_name": "",
+      "middle_native_name": "",
+      "department": "",
+      "building": "",
+      "room": "",
+      "date_birth": {
+        "year": "",
+        "month": "",
+        "day": ""
+      },
+      "desk_number": "",
+      "manager": {
+        "id": "",
+        "first_name": "",
+        "last_name": ""
+      },
+      "phone": "",
+      "email": "michael@mail.com",
+      "password": "$2b$10$mN1ldb4var230GnZ/Yf8duJtU3Yepu5zw69iZiQJWWv8V/0AW.TnK",
+      "teams": "",
+      "cnumber": "",
+      "citizenship": "",
+      "visa": [],
+      "address_book_role": "employee",
+      "hr_employee_list": []
+    }
+  ]
+}
