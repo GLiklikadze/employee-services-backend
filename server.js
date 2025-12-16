@@ -209,5 +209,3 @@ app.put("/edit/:id", async (req, res) => {
     updatedUser: targetUser,
   });
 });
-
-app.listen(4000, () => console.log("Server running on http://localhost:4000"));
