@@ -2,13 +2,23 @@ import express from "express";
 import cors from "cors";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
-import { getDb } from "./db.js"; // async db getter
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-// -------------------- Root Endpoint --------------------
+// -------------------- In-memory storage --------------------
+const users = [
+  {
+    _id: "1",
+    email: "admin@example.com",
+    password: "$2b$10$e0MYzXyjpJS7Pd0RVvHwHeFxZyNw1aUiMP0e0kO/5fOdU6d7AQmfe", // "password"
+    address_book_role: "admin",
+    hr_employee_list: []
+  }
+];
+
+// -------------------- Root endpoint --------------------
 app.get("/", (req, res) => {
   res.json({
     message: "Employee Services API",
@@ -18,21 +28,19 @@ app.get("/", (req, res) => {
       "POST /sign-in",
       "POST /sign-up",
       "PATCH /settings",
-      "PUT /edit/:id",
-    ],
+      "PUT /edit/:id"
+    ]
   });
 });
 
 // -------------------- GET /users --------------------
-app.get("/users", async (req, res) => {
-  const db = await getDb();
-  res.json(db.data.users);
+app.get("/users", (req, res) => {
+  res.json(users);
 });
 
 // -------------------- GET /users/:id --------------------
-app.get("/users/:id", async (req, res) => {
-  const db = await getDb();
-  const user = db.data.users?.find((u) => u._id === req.params.id);
+app.get("/users/:id", (req, res) => {
+  const user = users.find((u) => u._id === req.params.id);
   if (!user) return res.status(404).json({ message: "User not found" });
   res.json(user);
 });
@@ -40,11 +48,9 @@ app.get("/users/:id", async (req, res) => {
 // -------------------- POST /sign-in --------------------
 app.post("/sign-in", async (req, res) => {
   const { email, password } = req.body;
-  if (!email || !password)
-    return res.status(400).json({ message: "Email and password required" });
+  if (!email || !password) return res.status(400).json({ message: "Email and password required" });
 
-  const db = await getDb();
-  const user = db.data.users.find((u) => u.email === email);
+  const user = users.find((u) => u.email === email);
   if (!user) return res.status(401).json({ message: "Invalid credentials" });
 
   const match = await bcrypt.compare(password, user.password);
@@ -56,7 +62,7 @@ app.post("/sign-in", async (req, res) => {
     email,
     id: user._id,
     role: user.address_book_role,
-    hr_employee_list: user.hr_employee_list,
+    hr_employee_list: user.hr_employee_list
   });
 });
 
@@ -67,10 +73,8 @@ app.post("/sign-up", async (req, res) => {
     return res.status(400).json({ message: "All fields are required" });
   }
 
-  const db = await getDb();
-  const exists = db.data.users.find((u) => u.email === email);
-  if (exists)
-    return res.status(400).json({ message: "Email already registered" });
+  const exists = users.find((u) => u.email === email);
+  if (exists) return res.status(400).json({ message: "Email already registered" });
 
   const hashed = await bcrypt.hash(password, 10);
   const newUser = {
@@ -80,65 +84,37 @@ app.post("/sign-up", async (req, res) => {
     first_name: firstName,
     last_name: lastName,
     address_book_role: "employee",
-    hr_employee_list: [],
+    hr_employee_list: []
   };
 
-  db.data.users.push(newUser);
-  await db.write();
-
+  users.push(newUser);
   res.status(201).json({ message: "User created", id: newUser._id, email });
 });
 
 // -------------------- PATCH /settings --------------------
-app.patch("/settings", async (req, res) => {
+app.patch("/settings", (req, res) => {
   const { addressBookRole, targetUserId, signedInUserId } = req.body;
   if (!addressBookRole || !targetUserId || !signedInUserId) {
-    return res
-      .status(400)
-      .json({ message: "role, targetUserId, and signedInUserId required" });
+    return res.status(400).json({ message: "role, targetUserId, and signedInUserId required" });
   }
 
-  const db = await getDb();
-  const signedInUser = db.data.users.find((u) => u._id === signedInUserId);
-  const targetUser = db.data.users.find((u) => u._id === targetUserId);
+  const signedInUser = users.find((u) => u._id === signedInUserId);
+  const targetUser = users.find((u) => u._id === targetUserId);
 
-  if (!signedInUser)
-    return res.status(404).json({ message: "Signed-in user not found" });
-  if (signedInUser._id === targetUserId)
-    return res.status(400).json({ message: "Cannot change own role" });
-  if (signedInUser.address_book_role !== "admin")
-    return res.status(400).json({ message: "Only admin can change roles" });
-  if (targetUser.address_book_role === addressBookRole)
-    return res.status(400).json({ message: "Role already set" });
+  if (!signedInUser) return res.status(404).json({ message: "Signed-in user not found" });
+  if (signedInUser._id === targetUserId) return res.status(400).json({ message: "Cannot change own role" });
+  if (signedInUser.address_book_role !== "admin") return res.status(400).json({ message: "Only admin can change roles" });
+  if (targetUser.address_book_role === addressBookRole) return res.status(400).json({ message: "Role already set" });
 
   targetUser.address_book_role = addressBookRole;
-  await db.write();
-
-  res.json({
-    message: "Role updated",
-    id: targetUserId,
-    address_book_role: addressBookRole,
-  });
+  res.json({ message: "Role updated", id: targetUserId, address_book_role: addressBookRole });
 });
 
 // -------------------- PUT /edit/:id --------------------
-app.put("/edit/:id", async (req, res) => {
+app.put("/edit/:id", (req, res) => {
   const { id } = req.params;
   const { updatedEmployee } = req.body;
 
   if (!updatedEmployee || typeof updatedEmployee !== "object") {
     return res.status(400).json({ message: "updatedEmployee object required" });
   }
-
-  const db = await getDb();
-  const targetUser = db.data.users.find((u) => u._id === id);
-  if (!targetUser) return res.status(404).json({ message: "User not found" });
-
-  Object.assign(targetUser, updatedEmployee);
-  await db.write();
-
-  res.json({ message: "User updated", id, updatedUser: targetUser });
-});
-
-// -------------------- Export for Vercel --------------------
-export default app;
